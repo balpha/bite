@@ -60,7 +60,7 @@ public abstract class Bite<T> implements Iterable<T> {
         return true;
     }
 
-    public ArrayList<T> ToArrayList() {
+    public ArrayList<T> toArrayList() {
         ArrayList<T> result = new ArrayList<T>();
         for (T val : this)
             result.add(val);

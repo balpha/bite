@@ -20,7 +20,7 @@ public class SortByBite<TKey extends Comparable<? super TKey>, TValue> extends B
 
     @Override
     public Iterator<TValue> iterator() {
-        List<TValue> list = Bite.from(mSource).ToArrayList();
+        List<TValue> list = Bite.from(mSource).toArrayList();
         Collections.sort(list, new Comparator<TValue>() {
             @Override
             public int compare(TValue o1, TValue o2) {
