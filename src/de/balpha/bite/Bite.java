@@ -41,6 +41,10 @@ public abstract class Bite<T> implements Iterable<T> {
         return new GroupByBite<TKey, T>(this, grouper);
     }
 
+    public <TKey extends Comparable<? super TKey>> Bite<T> sortBy(Func<? super T, TKey> keyFunc) {
+        return new SortByBite<TKey, T>(this, keyFunc);
+    }
+
     public boolean any(Predicate<? super T> predicate) {
         for (T v : this.filter(predicate)) {
             return true;
