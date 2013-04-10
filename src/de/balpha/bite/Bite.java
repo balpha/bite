@@ -37,6 +37,9 @@ public abstract class Bite<T> implements Iterable<T> {
         return new AndBite<T>(this, other);
     }
 
+    public <TKey> Bite<Grouping<TKey, T>> groupBy(Func<? super T, ? extends TKey> grouper) {
+        return new GroupByBite<TKey, T>(this, grouper);
+    }
 
     public boolean any(Predicate<? super T> predicate) {
         for (T v : this.filter(predicate)) {
