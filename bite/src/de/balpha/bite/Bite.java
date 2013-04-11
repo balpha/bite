@@ -6,6 +6,7 @@ import de.balpha.bite.FunctionalInterfaces.Predicate;
 import de.balpha.bite.SpecializedBites.*;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public abstract class Bite<T> implements Iterable<T> {
 
@@ -47,6 +48,7 @@ public abstract class Bite<T> implements Iterable<T> {
         return new SortByBite<TKey, T>(this, keyFunc);
     }
 
+    @SuppressWarnings("LoopStatementThatDoesntLoop")
     public boolean any(Predicate<? super T> predicate) {
         for (T v : this.filter(predicate)) {
             return true;
@@ -60,6 +62,20 @@ public abstract class Bite<T> implements Iterable<T> {
                 return false;
         }
         return true;
+    }
+
+    @SuppressWarnings("LoopStatementThatDoesntLoop")
+    public T first() {
+        for (T v : this)
+            return v;
+        throw new NoSuchElementException();
+    }
+
+    @SuppressWarnings("LoopStatementThatDoesntLoop")
+    public T firstOr(T other) {
+        for (T v : this)
+            return v;
+        return other;
     }
 
     public ArrayList<T> toArrayList() {
