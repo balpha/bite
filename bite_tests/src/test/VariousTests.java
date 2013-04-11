@@ -1,12 +1,12 @@
 package test;
 
 import de.balpha.bite.Bite;
-import static de.balpha.bite.Bite.from;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
+
+import static de.balpha.bite.Bite.from;
 
 public class VariousTests extends BaseTest {
 

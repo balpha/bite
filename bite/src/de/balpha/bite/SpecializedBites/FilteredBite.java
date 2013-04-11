@@ -52,7 +52,7 @@ public class FilteredBite<T> extends Bite<T> {
                 mNext = null;
                 mNextFound = true;
             }
-            return mHasNext;  //To change body of implemented methods use File | Settings | File Templates.
+            return mHasNext;
         }
 
         @Override
