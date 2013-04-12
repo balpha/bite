@@ -13,6 +13,8 @@ public abstract class Bite<T> implements Iterable<T> {
     public static <U> Bite<U> from(Iterable<U> source) {
         if (source instanceof Bite)
             return (Bite<U>) source;
+        if (source instanceof ArrayList)
+            return new CopyArrayListBite<U>((ArrayList<U>)source);
         return new CopyBite<U>(source);
     }
 
