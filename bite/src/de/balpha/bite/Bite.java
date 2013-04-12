@@ -78,6 +78,13 @@ public abstract class Bite<T> implements Iterable<T> {
         return other;
     }
 
+    public long count() {
+        long result = 0;
+        for (T v : this)
+            result++;
+        return result;
+    }
+
     public ArrayList<T> toArrayList() {
         ArrayList<T> result = new ArrayList<T>();
         for (T val : this)

@@ -37,6 +37,12 @@ public class VariousTests extends BaseTest {
         }
     }
 
+    @Test
+    public void TestCount() {
+        Bite<Integer> bite = from(Arrays.<Integer>asList(1, 2, 3, 4, 5, 6, 23));
 
+        Assert.assertTrue(bite.count() == 7);
+        Assert.assertTrue(Bite.from(Collections.<String>emptyList()).count() == 0);
+    }
 
 }
