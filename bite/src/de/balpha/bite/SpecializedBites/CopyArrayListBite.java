@@ -4,7 +4,6 @@ import de.balpha.bite.Bite;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 public class CopyArrayListBite<T> extends Bite<T> {
@@ -17,7 +16,7 @@ public class CopyArrayListBite<T> extends Bite<T> {
 
     @Override
     public Bite<T> skip(int count) {
-        return super.skip(count);    //To change body of overridden methods use File | Settings | File Templates.
+        return super.skip(count);
     }
 
     @Override
