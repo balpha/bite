@@ -21,6 +21,18 @@ public class VariousTests extends BaseTest {
     }
 
     @Test
+    public void BuildFromArray() {
+        Integer[] arr = new Integer[] { 7, 42, 66 };
+        List<Integer> arrlist = Arrays.asList(7, 42, 66);
+        Bite<Integer> arrbite = from(arr);
+        AssertIterEquals(arrbite, from (arrlist));
+
+        Assert.assertTrue(arrbite.first() == 7);
+        Assert.assertTrue(arrbite.skip(1).count() == 2);
+        Assert.assertTrue(arrbite.take(0).firstOr(-1) == -1);
+    }
+
+    @Test
     public void TestFirst() {
         Bite<Integer> bite1 = from(Arrays.<Integer>asList(1, 2, 3));
         Bite<Integer> bite2 = from(Collections.<Integer>emptyList());

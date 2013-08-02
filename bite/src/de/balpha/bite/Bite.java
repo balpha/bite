@@ -18,6 +18,10 @@ public abstract class Bite<T> implements Iterable<T> {
         return new CopyBite<U>(source);
     }
 
+    public static <U> Bite<U> from(U[] source) {
+        return new CopyArrayBite<U>(source);
+    }
+
     public Bite<T> filter(Predicate<? super T> predicate) {
         return new FilteredBite<T>(this, predicate);
     }
