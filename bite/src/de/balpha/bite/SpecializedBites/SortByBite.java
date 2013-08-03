@@ -12,21 +12,32 @@ public class SortByBite<TKey extends Comparable<? super TKey>, TValue> extends B
 
     private Iterable<TValue> mSource;
     private Func<? super TValue, ? extends TKey> mKeyFunc;
+    private Comparator<TValue> mComparator;
 
-    public SortByBite(Iterable<TValue> source, Func<? super TValue, ? extends TKey> keyFunc) {
+    private class AscendingComparator implements Comparator<TValue> {
+        @Override
+        public int compare(TValue o1, TValue o2) {
+            return mKeyFunc.apply(o1).compareTo(mKeyFunc.apply(o2));
+        }
+    }
+    private class DescendingComparator implements Comparator<TValue> {
+        @Override
+        public int compare(TValue o1, TValue o2) {
+            return mKeyFunc.apply(o2).compareTo(mKeyFunc.apply(o1));
+        }
+    }
+
+
+    public SortByBite(Iterable<TValue> source, Func<? super TValue, ? extends TKey> keyFunc, boolean descending) {
         mSource = source;
         mKeyFunc = keyFunc;
+        mComparator = descending ? new DescendingComparator() : new AscendingComparator();
     }
 
     @Override
     public Iterator<TValue> iterator() {
         List<TValue> list = Bite.from(mSource).toArrayList();
-        Collections.sort(list, new Comparator<TValue>() {
-            @Override
-            public int compare(TValue o1, TValue o2) {
-                return mKeyFunc.apply(o1).compareTo(mKeyFunc.apply(o2));
-            }
-        });
+        Collections.sort(list, mComparator);
         return list.iterator();
     }
 }

@@ -22,10 +22,18 @@ public class SortByTest extends BaseTest {
                 return value.length();
             }
         });
+        Bite<String> sortedReverse = from(source).sortByDescending(new Func<String, Integer>() {
+            @Override
+            public Integer apply(String value) {
+                return value.length();
+            }
+        });
 
         List<String> expected = Arrays.asList("is", "no", "in", "biz", "biz", "like", "show", "this", "There", "world");
+        List<String> expectedReverse = Arrays.asList("There", "world", "like", "show", "this", "biz", "biz", "is", "no", "in");
 
         AssertIterEquals(expected, sorted);
+        AssertIterEquals(expectedReverse, sortedReverse);
 
         List<Integer> numbers = Arrays.asList(1, 2, 3, 0);
         Iterable<Integer> badSorted = from(numbers).sortBy(new Func<Integer, Integer>() {

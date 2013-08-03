@@ -51,7 +51,11 @@ public abstract class Bite<T> implements Iterable<T> {
     }
 
     public <TKey extends Comparable<? super TKey>> Bite<T> sortBy(Func<? super T, TKey> keyFunc) {
-        return new SortByBite<TKey, T>(this, keyFunc);
+        return new SortByBite<TKey, T>(this, keyFunc, false);
+    }
+
+    public <TKey extends Comparable<? super TKey>> Bite<T> sortByDescending(Func<? super T, TKey> keyFunc) {
+        return new SortByBite<TKey, T>(this, keyFunc, true);
     }
 
     @SuppressWarnings("LoopStatementThatDoesntLoop")
