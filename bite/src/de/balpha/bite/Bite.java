@@ -61,7 +61,7 @@ public abstract class Bite<T> implements Iterable<T> {
         return new SortByBite<TKey, T>(this, keyFunc, false);
     }
 
-    public <TKey extends Comparable<? super TKey>> Bite<T> sortByDescending(Func<? super T, TKey> keyFunc) {
+    public <TKey extends Comparable<? super TKey>> Bite<T> sortDescendingBy(Func<? super T, TKey> keyFunc) {
         return new SortByBite<TKey, T>(this, keyFunc, true);
     }
 

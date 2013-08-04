@@ -90,7 +90,7 @@ public class TautologyTests extends BaseTest {
             }
         };
         AssertIterEquals(bite.sortBy(zero), bite);
-        AssertIterEquals(bite.sortByDescending(zero), bite);
+        AssertIterEquals(bite.sortDescendingBy(zero), bite);
 
         Func2<T, T, Integer> badZipper = new Func2<T, T, Integer>() {
             @Override
@@ -153,7 +153,7 @@ public class TautologyTests extends BaseTest {
         }));
         Bite<T> reverseAndBack = bite
                 .groupBy(counter)
-                .sortByDescending(groupSorter)
+                .sortDescendingBy(groupSorter)
                 .map(new Func<Grouping<Integer, T>, T>() {
                     @Override
                     public T apply(Grouping<Integer, T> value) {
@@ -161,7 +161,7 @@ public class TautologyTests extends BaseTest {
                     }
                 })
                 .groupBy(counter)
-                .sortByDescending(groupSorter)
+                .sortDescendingBy(groupSorter)
                 .map(new Func<Grouping<Integer, T>, T>() {
                     @Override
                     public T apply(Grouping<Integer, T> value) {

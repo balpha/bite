@@ -22,7 +22,7 @@ public class SortByTest extends BaseTest {
                 return value.length();
             }
         });
-        Bite<String> sortedReverse = from(source).sortByDescending(new Func<String, Integer>() {
+        Bite<String> sortedReverse = from(source).sortDescendingBy(new Func<String, Integer>() {
             @Override
             public Integer apply(String value) {
                 return value.length();
