@@ -26,6 +26,5 @@ public class ZipWithTest extends BaseTest {
         List<Integer> expected = Arrays.asList(41, 9, 1, 47);
 
         AssertIterEquals(expected, from(source1).zipWith(source2, sum));
-        AssertIterEquals(Collections.emptyList(), from(Collections.<Integer>emptyList()).zipWith(source2, sum));
     }
 }

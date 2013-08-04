@@ -18,8 +18,6 @@ public class AndTest extends BaseTest {
         List<Number> expected = Arrays.<Number>asList(13, -3, 7, 5, 0, -2, 1, 28, 12, -6, 42);
 
         AssertIterEquals(expected, from(source1).and(source2));
-        AssertIterEquals(source1, from(source1).and(Collections.<Number>emptyList()));
-        AssertIterEquals(source1, from(Collections.<Number>emptyList()).and(source1));
         AssertIterEquals(Collections.<Number>emptyList(), from(Collections.<Number>emptyList()).and(Collections.<Number>emptyList()));
     }
 }

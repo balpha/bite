@@ -44,13 +44,6 @@ public class MapTest extends BaseTest {
         // just checking that this compiles
         from(source).map(numberString).filter(notNull);
 
-        AssertIterEquals(source, from(source).map(new Func<Integer, Integer>() {
-            @Override
-            public Integer apply(Integer value) {
-                return value;
-            }
-        }));
-
         AssertIterEquals(Collections.emptyList(), from(Collections.<Integer>emptyList()).map(halve));
     }
 
