@@ -13,6 +13,28 @@ import static de.balpha.bite.Bite.from;
 public class VariousTests extends BaseTest {
 
     @Test
+    public void TestNoNull() {
+        try {
+            from((Bite<String>)null);
+            Assert.assertTrue(false);
+        } catch (IllegalArgumentException ex) {
+            // fine
+        }
+        try {
+            from((Integer[])null);
+            Assert.assertTrue(false);
+        } catch (IllegalArgumentException ex) {
+            // fine
+        }
+        try {
+            from((ArrayList<Object>)null);
+            Assert.assertTrue(false);
+        } catch (IllegalArgumentException ex) {
+            // fine
+        }
+    }
+
+    @Test
     public void TestNoRedundantBiting() {
         Bite<Integer> bite1 = from(Arrays.<Integer>asList(1, 2, 3));
         Bite<Integer> bite2 = from(bite1);

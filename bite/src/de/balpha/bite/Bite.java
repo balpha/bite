@@ -11,6 +11,7 @@ import java.util.NoSuchElementException;
 public abstract class Bite<T> implements Iterable<T> {
 
     public static <U> Bite<U> from(Iterable<U> source) {
+        checkSourceNotNull(source);
         if (source instanceof Bite)
             return (Bite<U>) source;
         if (source instanceof ArrayList)
@@ -19,7 +20,13 @@ public abstract class Bite<T> implements Iterable<T> {
     }
 
     public static <U> Bite<U> from(U[] source) {
+        checkSourceNotNull(source);
         return new CopyArrayBite<U>(source);
+    }
+
+    private static void checkSourceNotNull(Object source) {
+        if (source == null)
+            throw new IllegalArgumentException("source cannot be null");
     }
 
     public Bite<T> filter(Predicate<? super T> predicate) {
