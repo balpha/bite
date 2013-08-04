@@ -29,7 +29,7 @@ public abstract class Bite<T> implements Iterable<T> {
             throw new IllegalArgumentException("source cannot be null");
     }
 
-    public Bite<T> filter(Predicate<? super T> predicate) {
+    public Bite<T> filter(Func<? super T, Boolean> predicate) {
         return new FilteredBite<T>(this, predicate);
     }
 
@@ -66,14 +66,14 @@ public abstract class Bite<T> implements Iterable<T> {
     }
 
     @SuppressWarnings("LoopStatementThatDoesntLoop")
-    public boolean any(Predicate<? super T> predicate) {
+    public boolean any(Func<? super T, Boolean> predicate) {
         for (T v : this.filter(predicate)) {
             return true;
         }
         return false;
     }
 
-    public boolean all(Predicate<? super T> predicate) {
+    public boolean all(Func<? super T, Boolean> predicate) {
         for (T v : this) {
             if (!predicate.apply(v))
                 return false;

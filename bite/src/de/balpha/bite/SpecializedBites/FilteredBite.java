@@ -1,16 +1,16 @@
 package de.balpha.bite.SpecializedBites;
 
 import de.balpha.bite.Bite;
-import de.balpha.bite.FunctionalInterfaces.Predicate;
+import de.balpha.bite.FunctionalInterfaces.Func;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class FilteredBite<T> extends Bite<T> {
     private Iterable<T> mSource;
-    private Predicate<? super T> mPredicate;
+    private Func<? super T, Boolean> mPredicate;
 
-    public FilteredBite(Iterable<T> source, Predicate<? super T> predicate) {
+    public FilteredBite(Iterable<T> source, Func<? super T, Boolean> predicate) {
         mSource = source;
         mPredicate = predicate;
     }
