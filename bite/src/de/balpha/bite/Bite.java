@@ -4,6 +4,7 @@ import de.balpha.bite.FunctionalInterfaces.Func;
 import de.balpha.bite.FunctionalInterfaces.Func2;
 import de.balpha.bite.FunctionalInterfaces.Predicate;
 import de.balpha.bite.SpecializedBites.*;
+import de.balpha.bite.UsefulFunctions.DoesNotEqual;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -63,6 +64,10 @@ public abstract class Bite<T> implements Iterable<T> {
 
     public <TKey extends Comparable<? super TKey>> Bite<T> sortDescendingBy(Func<? super T, TKey> keyFunc) {
         return new SortByBite<TKey, T>(this, keyFunc, true);
+    }
+
+    public Bite<T> except(T value) {
+        return new FilteredBite<T>(this, new DoesNotEqual<T>(value));
     }
 
     @SuppressWarnings("LoopStatementThatDoesntLoop")

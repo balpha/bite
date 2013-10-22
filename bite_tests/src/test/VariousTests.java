@@ -122,6 +122,16 @@ public class VariousTests extends BaseTest {
 
     }
 
+    @Test
+    public void TestExcept() {
+        List<Object> l = Arrays.<Object>asList(42, null, "Hello", new Date(), "World");
+        List<Object> lSansHello = Arrays.<Object>asList(42, null, new Date(), "World");
+        List<Object> lSansNull = Arrays.<Object>asList(42, "Hello", new Date(), "World");
+
+        AssertIterEquals(from(l).except("Hello"), lSansHello);
+        AssertIterEquals(from(l).except(null), lSansNull);
+    }
+
     private class TestList<T> extends ArrayList<T> {
         private boolean mIteratorCalled = false;
 
